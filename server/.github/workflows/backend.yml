@@ -19,10 +19,16 @@ jobs:
           python-version: '3.11'
 
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: |
+          cd ./server
+          pip install -r requirements.txt
 
       - name: Run Migrations
-        run: python manage.py migrate
+        run: |
+          cd ./server
+          python manage.py migrate
 
       - name: Run Tests
-        run: python manage.py test
+        run: |
+          cd ./server
+          python manage.py test

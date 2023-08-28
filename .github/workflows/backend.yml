@@ -27,7 +27,7 @@ jobs:
       - name: Activate Virtual Environment
         run: |
           cd ./server
-          .venv\Scripts\activate.bat
+          .venv/Scripts/activate.bat
 
       - name: Run Migrations
         run: |

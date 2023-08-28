@@ -20,20 +20,20 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd .\client\.github\workflows\
+          cd ./client
           npm install
 
       - name: Build
         run: |
-          cd .\client\.github\workflows\
+          cd ./client
           npm run build
 
       - name: Run TypeScript Check
         run: |
-          cd .\client\.github\workflows\
+          cd ./client
           npm run type-check
 
       - name: Run Tests
         run: |
-          cd .\client\.github\workflows\
+          cd ./client
           npm test

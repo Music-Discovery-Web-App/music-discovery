@@ -20,15 +20,15 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd ./server
+          cd ./server/music_discovery
           pip install -r requirements.txt
 
       - name: Run Migrations
         run: |
-          cd ./server
+          cd ./server/music_discovery
           python manage.py migrate
 
       - name: Run Tests
         run: |
-          cd ./server
+          cd ./server/music_discovery
           python manage.py test

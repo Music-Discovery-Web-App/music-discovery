@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from rest_framework import permissions
+from user_serializers import UserSerializer
+from models import User_Registration
 
-# Create your views here.
-from django.http import HttpResponse
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the user_registration index.")
+class UsersViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that retrieves all user IDs from the DB
+    """
+    queryset = User_Registration.objects.all().order_by("user_id")
+    serializer_class = UserSerializer
+    permission_classes = (permissions.IsAuthenticated)

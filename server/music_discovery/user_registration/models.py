@@ -1,6 +1,6 @@
 from django.db import models
 
-class User_Registration(models.Model):
+class UserRegistration(models.Model):
     user_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)

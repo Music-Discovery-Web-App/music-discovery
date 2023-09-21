@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from models import UserRegistration
-
+from user_registration.models import UserRegistration
 
 class UserSerializer(serializers.HyperLinkedModelSerializer):
     class Meta:

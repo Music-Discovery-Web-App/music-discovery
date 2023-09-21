@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "user_registration.apps.User_Registration_Config",
-    "stored_search_results.apps.Stored_Search_Results_Config",
+    "user_registration.apps.UserRegistrationConfig",
+    "stored_search_results.apps.StoredSearchResultsConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

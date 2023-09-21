@@ -1,9 +1,9 @@
 from django.db import models
-from user_registration.models import User_Registration
+from user_registration.models import UserRegistration
 
-class Stored_Search_Results(models.Model):
+class StoredSearchResults(models.Model):
     result_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User_Registration, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserRegistration, on_delete=models.CASCADE)
     search_text = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
 

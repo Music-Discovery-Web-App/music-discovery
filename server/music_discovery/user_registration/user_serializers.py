@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from models import User_Registration
+from models import UserRegistration
 
 
 class UserSerializer(serializers.HyperLinkedModelSerializer):
     class Meta:
-        model = User_Registration
+        model = UserRegistration
         fields = ["user_id", "first_name", "last_name", "email", "password", "date_created"]

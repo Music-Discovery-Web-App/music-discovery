@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Stored_Search_Results',
+            name='StoredSearchResults',
             fields=[
                 ('result_id', models.AutoField(primary_key=True, serialize=False)),
                 ('search_text', models.TextField()),

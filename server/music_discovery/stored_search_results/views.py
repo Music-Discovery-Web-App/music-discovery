@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework import permissions
-from .results_serializers import ResultsSerializer
-from models import StoredSearchResults
+from stored_search_results.results_serializers import ResultsSerializer
+from stored_search_results.models import StoredSearchResults
 
 class ResultsViewSet(viewsets.ModelViewSet):
     """

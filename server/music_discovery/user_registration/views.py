@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework import permissions
-from .user_serializers import UserSerializer
-from models import UserRegistration
+from user_registration.user_serializers import UserSerializer
+from user_registration.models import UserRegistration
 
 class UsersViewSet(viewsets.ModelViewSet):
     """

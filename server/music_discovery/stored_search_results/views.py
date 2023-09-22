@@ -7,6 +7,6 @@ class ResultsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows stored search results to be viewed
     """
-    queryset = StoredSearchResults.objects.all().order_by("date_created").desc()
+    queryset = StoredSearchResults.objects.all().order_by("date_created")
     serializer_class = ResultsSerializer
     permission_classes = (permissions.IsAuthenticated)

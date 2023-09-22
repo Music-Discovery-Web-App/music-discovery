@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('result_id', models.AutoField(primary_key=True, serialize=False)),
                 ('search_text', models.TextField()),
                 ('date_created', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='user_registration.user_registration')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='user_registration.UserRegistration')),
             ],
         ),
     ]

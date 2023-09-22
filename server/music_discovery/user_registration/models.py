@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class UserRegistration(models.Model):
     user_id = models.AutoField(primary_key=True)

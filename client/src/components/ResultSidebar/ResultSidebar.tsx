@@ -1,14 +1,16 @@
 import { ReactElement, useEffect, useState } from "react"
-import { SearchResults } from "src/shared/search.types"
+// Commented out for now for the sake of Frontend CI
+// import { SearchResults } from "src/shared/search.types"
 
-interface ResultSidebarProps {
-  data: SearchResults
-}
+// interface ResultSidebarProps {
+//   data: SearchResults
+// }
 
 const ResultSidebar = (): ReactElement => {
-  const [isOpen, setIsOpen] = useState<boolean>(true)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isMobile, setIsMobile] = useState<boolean>(false)
 
+  setIsOpen(true)
 //   const { results } = data
 
   useEffect(() => {

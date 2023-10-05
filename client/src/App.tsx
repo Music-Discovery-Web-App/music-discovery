@@ -1,7 +1,7 @@
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 // import Footer from './components/Footer/Footer'
-import ResultSidebar from './components/ResultSidebar/ResultSidebar'
+import ResultSidebar from './views/Home/components/ResultSidebar'
 
 function App() {
   return (

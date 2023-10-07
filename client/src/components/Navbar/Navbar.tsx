@@ -18,8 +18,8 @@ const Navbar = () => {
   return (
     <div className="bg-gray-500">
       <div className="mx-auto max-w-7xl px-3 ">
-        <div className="relative flex h-20 items-center justify-between">
-          <div className="flex flex-1 items-center justify-center">
+        <div className="relative flex h-20 items-left justify-between">
+          <div className="flex flex-1 items-left justify-center">
             {/* Icon/Logo goes here */}
             {/* <div className="flex flex-shrink-0 items-center">
               <img className="h-8 w-auto" src="#" alt="Your Company" />

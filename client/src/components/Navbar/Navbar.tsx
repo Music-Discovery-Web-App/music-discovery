@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false)
+
+  const navigate = useNavigate()
+
+  const handleClick = (path: string) => {
+    navigate(path)
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,30 +34,30 @@ const Navbar = () => {
 
             {!isMobile && (
               <div className="flex justify-between">
-                <a
-                  href="#"
+                <button
+                  onClick= {() => handleClick("/")}
                   className="hover:-translate-y-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"
                 >
                   Home
-                </a>
-                <a
-                  href="#"
+                </button>
+                <button
+                  onClick= {() => handleClick("/login")}
                   className="hover:-translate-y-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"
                 >
                   Login
-                </a>
-                <a
-                  href="#"
+                </button>
+                <button
+                  onClick= {() => handleClick("/register")}
                   className="hover:-translate-y-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"
                 >
                   Register
-                </a>
-                <a
-                  href="#"
+                </button>
+                <button
+                  onClick= {() => handleClick("/contact")}
                   className="hover:-translate-x-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"
                 >
                   Contact
-                </a>
+                </button>
               </div>
             )}
           </div>

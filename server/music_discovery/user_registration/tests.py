@@ -1,9 +1,12 @@
 from django.test import TestCase
 from django.utils import timezone
 from user_registration.models import user_registration 
-from user_registration.user_serializers import UserSerializer
 
-# models test
+# models tests #
+
+# Test Case: Creates a new user with validated values.
+# This will test whether or not the user_registration model can 
+# create and store an index successfully.
 class UserRegistrationModelTest(TestCase):
 
     def create_user(self, first_name="Jane", last_name="Doe", email="jane@doe.com", password="jane12345"):

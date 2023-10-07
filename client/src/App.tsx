@@ -1,15 +1,13 @@
-import './App.css'
-import Navbar from './components/Navbar/Navbar'
-// import Footer from './components/Footer/Footer'
-import ResultSidebar from './components/ResultSidebar/ResultSidebar'
+import "./App.css"
+import FrontendRoutes from "./routes"
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Navbar/>
-      <ResultSidebar />
-      {/* <Footer/> */}
-    </>
+    <div className="min-h-screen">
+      <div className="w-full h-full">
+        <FrontendRoutes />
+      </div>
+    </div>
   )
 }
 

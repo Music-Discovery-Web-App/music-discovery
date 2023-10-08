@@ -17,15 +17,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess, onLoginFailure })
         password,
       });
 
-      // Assuming your backend returns a 'token' key in the response
       const token = response.data.token;
 
       // Store the token securely (e.g., in localStorage or a state management solution)
-      // You should implement your own secure storage solution here
       localStorage.setItem('token', token);
 
       // Call the success callback with the token
       onLoginSuccess(token);
+
     } catch (error) {
       // Handle login error (e.g., show an error message to the user)
       onLoginFailure('Login failed. Please check your credentials.');

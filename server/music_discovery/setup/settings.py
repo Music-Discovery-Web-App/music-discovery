@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     "user_registration.apps.UserRegistrationConfig",
     "stored_search_results.apps.StoredSearchResultsConfig",
     'django.contrib.admin',
@@ -54,7 +55,12 @@ REST_FRAMEWORK = {
     ),
 }
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,6 +68,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
 ]
 
 ROOT_URLCONF = 'setup.urls'
@@ -87,7 +97,7 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+AUTH_USER_MODEL = 'user_registration.CustomUser'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

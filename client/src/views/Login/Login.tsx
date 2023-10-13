@@ -6,13 +6,11 @@ const Login: React.FC = () => {
   const navigate = useNavigate()
 
   const handleLoginSuccess = (token: string) => {
-    // Handle successful login
     console.log("Login successful. Token:", token)
     navigate("/")
   }
 
   const handleLoginFailure = (error: string) => {
-    // Handle login failure
     console.error("Login failed:", error)
   }
 

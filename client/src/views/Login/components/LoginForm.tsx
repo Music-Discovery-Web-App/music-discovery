@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { ToastContainer, toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 import "react-toastify/dist/ReactToastify.css"
-// { AxiosError }
 
 interface LoginFormProps {
   onLoginSuccess: (token: string) => void
@@ -15,6 +15,11 @@ const LoginForm: React.FC<LoginFormProps> = ({
 }) => {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+  const navigate = useNavigate()
+
+  const routeChange = () => {
+    navigate("/register")
+  }
 
   const handleLogin = async () => {
     try {
@@ -25,18 +30,15 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
       const token = response.data.token
 
-      // Store the token securely (e.g., in localStorage or a state management solution)
       localStorage.setItem("token", token)
 
-      // Call the success callback with the token
       onLoginSuccess(token)
     } catch (error) {
-      // Handle login error (e.g., show an error message to the user)
       onLoginFailure("Login failed. Please check your credentials.")
 
       toast.error("Login failed. Please check your credentials.", {
         position: "top-right",
-        autoClose: 5000, // Close after 5 seconds
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -60,7 +62,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-      <button>Need to register? Sign up for free.</button>
+      <button onClick={routeChange}>Need to register? Sign up for free.</button>
       <ToastContainer />
     </div>
   )

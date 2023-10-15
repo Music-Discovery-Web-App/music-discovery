@@ -1,8 +1,11 @@
-import React from 'react'
+import React from "react"
+import ContactCard from "./components/ContactCard"
 
-const Contact = () => {
+const Contact: React.FC = () => {
   return (
-    <div>This is the contact page</div>
+    <div>
+      <ContactCard />
+    </div>
   )
 }
 

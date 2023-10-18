@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import SubmitButton from "../../../shared/components/Button"
 import "react-toastify/dist/ReactToastify.css"
 
 interface LoginFormProps {
@@ -61,7 +62,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <SubmitButton text="Login" onClick={handleLogin} />
       <button onClick={routeChange}>Need to register? Sign up for free.</button>
       <ToastContainer />
     </div>

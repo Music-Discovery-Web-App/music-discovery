@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import SubmitButton from "../../../shared/components/Button"
 import "react-toastify/dist/ReactToastify.css"
 
 interface RegistrationFormProps {
@@ -58,12 +59,14 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
 
   return (
     <div>
-      <input
-        type="first_name"
-        placeholder="First Name"
-        value={first_name}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
+      <div>
+        <input
+          type="first_name"
+          placeholder="First Name"
+          value={first_name}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+      </div>
       <input
         type="last_name"
         placeholder="Last Name"
@@ -82,10 +85,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleRegistration}>Register</button>
-      <button onClick={routeChange}>
-        Already have an account? Log in here.
-      </button>
+      <SubmitButton text="Register" onClick={handleRegistration} />
+      <button onClick={routeChange}>Already have an account? Log in here.</button>
       <ToastContainer />
     </div>
   )

@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { ToastContainer, toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../../../shared/context/UserContext"
 import axios from "axios"
 import SubmitButton from "../../../shared/components/Button"
 import "react-toastify/dist/ReactToastify.css"
@@ -14,6 +15,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
   onLoginSuccess,
   onLoginFailure,
 }) => {
+  const userContext = useContext(UserContext)
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const navigate = useNavigate()
@@ -30,8 +32,15 @@ const LoginForm: React.FC<LoginFormProps> = ({
       })
 
       const token = response.data.token
+      const userName = response.data.name
 
       localStorage.setItem("token", token)
+
+      userContext.setUser({
+        email: email,
+        name: userName,
+        loggedIn: true,
+      })
 
       onLoginSuccess(token)
     } catch (error) {

@@ -1,6 +1,6 @@
-// import React from 'react'
+import React from "react"
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
       <div className="flex-col text-center">
         <div className="flex-1">This is for search results</div>

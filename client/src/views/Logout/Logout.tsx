@@ -1,40 +1,44 @@
 import React, { useContext, useEffect } from "react"
 import { UserContext } from "../../shared/context/UserContext"
-// import axios from "axios"
+import axios from "axios"
 
 const Logout: React.FC = () => {
-  const userContext = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
-    // Make an API call to log the user out
     const logoutUser = async () => {
       try {
-        // Make a request to your backend's logout endpoint
-        // await axios.post(
-        //   "http://localhost:8000/user/logout/",
-        //   {},
-        //   {
-        //     withCredentials: true, // Include credentials for authentication
-        //   }
-        // )
+        const token = localStorage.getItem("token")
 
-        // Clear local storage (if applicable)
+        if (token) {
+          await axios.post(
+            "http://localhost:8000/user/logout/",
+            {},
+            {
+              headers: {
+                Authorization: `Token ${token}`,
+              },
+            }
+          )
+        }
+
         localStorage.removeItem("token")
 
-        // Reset UserContext to the initial state (not logged in)
-        userContext.setUser({
-          email: "",
-          name: "",
-          loggedIn: false,
-        })
+        if (user && user.loggedIn) {
+          // Update the user context
+          setUser({
+            email: "",
+            name: "",
+            loggedIn: false,
+          })
+        }
       } catch (error) {
-        // Handle any errors that occur during the logout process
         console.error("Logout error:", error)
       }
     }
 
     logoutUser()
-  }, [userContext])
+  }, [user, setUser])
 
   return (
     <div>

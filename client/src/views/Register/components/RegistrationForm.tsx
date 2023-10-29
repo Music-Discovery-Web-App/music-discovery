@@ -33,8 +33,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
           last_name,
           email,
           password,
-        }
-      )
+        },
+      );
 
       const token = response.data.token
 
@@ -80,7 +80,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
-        type="password"
+        type="password1"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}

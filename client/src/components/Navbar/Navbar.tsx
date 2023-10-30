@@ -57,12 +57,14 @@ const Navbar = () => {
                     Login
                   </button>
                 )}
-                <button
-                  onClick={() => handleClick("/register")}
-                  className="hover:-translate-y-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"
-                >
-                  Register
-                </button>
+                {userContext.user && userContext.user.loggedIn ? null : (
+                  <button
+                    onClick={() => handleClick("/register")}
+                    className="hover:-translate-y-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"
+                  >
+                    Register
+                  </button>
+                )}
                 <button
                   onClick={() => handleClick("/contact")}
                   className="hover:-translate-x-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"
@@ -97,12 +99,14 @@ const Navbar = () => {
               Login
             </a>
           )}
-          <a
-            href="#"
-            className="hover:-translate-y-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"
-          >
-            Register
-          </a>
+          {userContext.user && userContext.user.loggedIn ? null : (
+            <a
+              href="#"
+              className="hover:-translate-y-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"
+            >
+              Register
+            </a>
+          )}
           <a
             href="#"
             className="hover:-translate-y-1 hover:bg-gray-600 transition ease-in-out text-white rounded-md px-3 py-2 text-[30px] font-medium block text-center font-young-serif"

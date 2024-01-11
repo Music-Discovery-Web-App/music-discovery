@@ -3,6 +3,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from urllib.parse import quote
 import logging
+from tracks.models import Tracks
 
 import requests, os
 from django.http import JsonResponse
@@ -63,6 +64,12 @@ def get_song(request, song_name):
                 'spotify_url': first_track['external_urls']['spotify'],
                 'spotify_id': first_track['id']
             }
+        
+        # just getting first track for now, can scale up later with top 3?
+            
+        Tracks.objects.get_or_create(
+            spotify_id=song_data["spotify_id"],
+            defaults=song_data)
         return JsonResponse(song_data)
     else:
         return JsonResponse({"error": "Failed to fetch song", "status_code": response.status_code, "spotify_response": response.json()})

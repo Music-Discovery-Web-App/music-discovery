@@ -1,14 +1,18 @@
-import "./App.css"
-import FrontendRoutes from "./routes"
+import { QueryClient, QueryClientProvider } from "react-query";
+import "./App.css";
+import TestField from "./components/TestField";
+import ResultSidebar from "./components/ResultSidebar";
 
+const queryClient = new QueryClient();
 const App = () => {
   return (
-    <div className="min-h-screen">
-      <div className="w-full h-full">
-        <FrontendRoutes />
+    <QueryClientProvider client={queryClient}>
+      <div className="h-screen w-full">
+        <TestField songName={undefined} accessToken={undefined} />
+        <ResultSidebar recommendations={undefined} />
       </div>
-    </div>
-  )
-}
+    </QueryClientProvider>
+  );
+};
 
-export default App
+export default App;

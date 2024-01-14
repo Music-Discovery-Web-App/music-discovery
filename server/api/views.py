@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from urllib.parse import quote
 import logging
 from tracks.models import Tracks
-
+import time
 import requests, os
 from django.http import JsonResponse
 from dotenv import load_dotenv
@@ -14,24 +14,36 @@ load_dotenv()
 
 SPOTIFY_CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 SPOTIFY_CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
-
+TOKEN_INFO = {
+    "access_token": None,
+    "expires_in": None
+}
 @csrf_exempt
 def get_token(request):
-    url = "https://accounts.spotify.com/api/token"
-    headers = {
-        "Content-Type": "application/x-www-form-urlencoded"
-    }
-    payload = {
-        "grant_type": "client_credentials"
-    }
-    response = requests.post(url, headers=headers, data=payload, auth=(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET))
-    if response.status_code == 200:
-        return JsonResponse(response.json())
+    current_time = time.time()
+    if TOKEN_INFO["access_token"] is None or current_time > TOKEN_INFO["expires_in"]:
+        response = requests.post('https://accounts.spotify.com/api/token', data={
+            'grant_type': 'client_credentials',
+            'client_id': SPOTIFY_CLIENT_ID,
+            'client_secret': SPOTIFY_CLIENT_SECRET,
+        })
+
+        if response.status_code == 200:
+            token_data = response.json()
+            TOKEN_INFO["access_token"] = token_data["access_token"]
+            TOKEN_INFO["expires_in"] = current_time + token_data["expires_in"]
+            print(token_data)
+            return JsonResponse({"access_token": token_data["access_token"]})
+        else:
+            return JsonResponse({"error": "Failed to fetch token"})
     else:
-        return JsonResponse({"error": "Failed to fetch Spotify token"}, status=500)
+        return JsonResponse({'access_token': TOKEN_INFO['access_token']})
     
+
 @csrf_exempt
 def get_song(request, song_name):
+    print("request", request)
+    print(song_name)
     token = request.headers.get("Authorization")
     if not token:
         return JsonResponse({"error": "No token provided"}, status=401)
@@ -70,6 +82,7 @@ def get_song(request, song_name):
         Tracks.objects.get_or_create(
             spotify_id=song_data["spotify_id"],
             defaults=song_data)
+        print(song_data)
         return JsonResponse(song_data)
     else:
         return JsonResponse({"error": "Failed to fetch song", "status_code": response.status_code, "spotify_response": response.json()})
@@ -107,6 +120,7 @@ def get_recommendations(request):
             }
 
             parsed.append(results_data)
+        print(results_data)
         return JsonResponse({"Recommendations": parsed})
     else:
         return JsonResponse({"error": "Fetching recommendations failed"})

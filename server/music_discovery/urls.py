@@ -21,6 +21,6 @@ urlpatterns = [
     path("user/", include("user.urls")),
     path("recommendations/", include("recommendations.urls")),
     path("api/", include("api.urls")),
-    path("tracks/", include("tracks.urls")),
+    # path("tracks/", include("tracks.urls")),
     path("admin/", admin.site.urls),
 ]

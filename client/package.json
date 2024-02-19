@@ -13,7 +13,7 @@
   "dependencies": {
     "@vitejs/plugin-react": "^4.2.1",
     "axios": "^1.6.7",
-    "dotenv": "^16.4.2",
+    "dotenv": "^16.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.22.1",
